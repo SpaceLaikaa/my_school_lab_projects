@@ -1,0 +1,4 @@
+Frodo Baggins, Network, frodo@shire.com
+Samwise Gamgee, HR, sam@shire.com
+Gandalf the Grey, IT, gandalf@middleearth.com
+Aragorn son of Arathorn, Security, aragorn@gondor.com
