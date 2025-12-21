@@ -1,3 +1,5 @@
+package lab_projects.lab9;
+
 import java.io.IOException;//To write IOException I suppose?
 import java.nio.file.Paths;//To use Paths.get
 import java.util.Scanner;
