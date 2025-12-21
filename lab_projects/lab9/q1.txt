@@ -1,0 +1,4 @@
+Programming in Java is fun.
+Java supports object oriented programming.
+Text processing and file handling are important in programming.
+Also, we love Java.
