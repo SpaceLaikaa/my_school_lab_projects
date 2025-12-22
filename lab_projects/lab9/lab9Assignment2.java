@@ -25,7 +25,7 @@ public class lab9Assignment2 {
                         String line = reader.nextLine();
                         if(line.trim().isEmpty()) continue;
                         String[] words = line.split(" ");
-                        for (int i = 0;i<words.length;i++){
+                        for (int i = 0;i<words.length;i+=3){
                             words[i]=words[i].replace("Hello","Hi");
                         }
                     }

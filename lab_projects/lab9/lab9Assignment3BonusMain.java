@@ -6,5 +6,6 @@ public class lab9Assignment3BonusMain {
         EM.loadEmployeesFromFile("src/lab_projects/lab9/q3.txt");
         EM.addEmployee("Arda","Software Engineer","arda3535@example.com");
         EM.displayEmployees();
+        EM.searchEmployee("Arda");
     }
 }

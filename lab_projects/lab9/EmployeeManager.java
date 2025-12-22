@@ -54,5 +54,30 @@ public class EmployeeManager {
                  if (f!=null) f.close();
             }
         }
+        public void searchEmployee(String name){
+            Scanner reader = null;
+            int count = 0;
+            try{
+                reader = new Scanner(Paths.get("src/lab_projects/lab9/q3.txt"));
+                while (reader.hasNextLine()){
+                    String line = reader.nextLine();
+                    if(line.trim().isEmpty())continue;
+                    String[] words = line.split(", ");
+                    for (int i =0;i<words.length;i+=3){
+                        if(words[i].equalsIgnoreCase(name)){
+                            count++;
+                            System.out.println(count+"- "+words[i] +" is on the list.");
+                        }
+                        else {
+                            count++;
+                            System.out.println(count+"- Not your input.");
+                        }
+                    }
+                }
+            }catch (IOException e){e.printStackTrace();}
+            finally {if (reader!=null){reader.close();}}
+
+
+        }
     }
 
