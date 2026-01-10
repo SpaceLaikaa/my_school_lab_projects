@@ -14,8 +14,8 @@ public class Book {
 
 
     public  int addPages(int pagesIncrement){
-        Scanner sc = new Scanner(System.in);
 
+        Scanner sc = new Scanner(System.in);
         pages = pagesIncrement+pages;
         return pages;
     }

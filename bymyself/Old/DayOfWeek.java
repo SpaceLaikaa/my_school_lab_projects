@@ -1,4 +1,4 @@
-package bymyself;
+package bymyself.Old;
 
 import java.util.Scanner;
 
