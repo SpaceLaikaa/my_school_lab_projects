@@ -17,7 +17,7 @@ public class Book {
         System.out.printf("ISBN: %d | Title: %s | Page Count: %d | Price: $%d",isbn,title,pageCount,price);
     }
 
-    //IDK if We are going to use setter and getter methods but lab Wants it
+    //IDK if We are going to use setter and getter methods but lab Wants it(probably just for a reminder )
     public long getISBN(){return isbn;}
     public String getTitle(){return title;}
     public int getPageCount(){return pageCount;}
