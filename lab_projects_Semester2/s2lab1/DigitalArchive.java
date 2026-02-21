@@ -38,7 +38,7 @@ public class DigitalArchive {
         }
 
         System.out.println("Would you like to remove a book? Please write which book you want to remove.(ISBN Number)");
-        String userRemoveChoice = sc.nextInt();
+        String userRemoveChoice = sc.nextLine();
         librarian.removeBook(userRemoveChoice);
         for (Book b : librarian.showArchive()) {
             if (b != null) {
@@ -46,5 +46,11 @@ public class DigitalArchive {
                 System.out.println();
             }
         }
+
+        System.out.println("=======");
+        System.out.println("Which book do you want to find?(ISBN Number)");
+        String userFindBookChoice= sc.nextLine();
+        librarian.findBook(userFindBookChoice);
+
     }
 }

@@ -45,9 +45,16 @@ public class Librarian {
         return books;
       }
 
-
-    public void findBook(String isbn){}
-    }
+      public void findBook(String isbn){
+        for(int i =0;i<books.length;i++){
+            if(books[i]!=null && books[i].getISBN().trim().equalsIgnoreCase(isbn)){
+                books[i].displayBooks();
+                return;
+            }
+        }
+          System.out.println("No ISBN such as "+isbn);
+      }
+}
 
 
 
