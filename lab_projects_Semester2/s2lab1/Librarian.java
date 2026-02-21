@@ -29,11 +29,20 @@ public class Librarian {
             System.out.println( addBook.getTitle()+" has been added to archive.");
         }
     }
-    public void removeBook(String isbn){
+    public void removeBook(long isbn){
+        for(int i =0;i<books.length;i++){
+            if(books[i]!=null && books[i].getISBN()==isbn){
+                System.out.println(books[i].getTitle() + " deleted from the archives.");
 
-    }
+                books[i]=null;
+                bookCount--;
+                return;//break
+            }
+        }
+        System.out.println("No ISBN such as " + isbn+"\n=======");}
+
     public Book[] showArchive() {
         return books;
+      }
     }
 
-}
