@@ -7,19 +7,19 @@ public class Librarian {
     private int age;
     private Book[] books;
 
-    public Librarian(int employeeID, String name, int age,Book[] comingBooks){
+    public Librarian(int employeeID, String name, int age,Book[] comingBooks) {
         this.employeeID = employeeID;
-        this.name=name;
+        this.name = name;
         this.age = age;
         this.books = new Book[5];
 
-        int boundary=comingBooks.length;
-        if(boundary>5){
-            boundary=5;
-        }
-        for(int i =0;i< boundary;i++){
-            bookCount++;
-            this.books[i] = comingBooks[i];
+        if (comingBooks != null) {
+            for (int i = 0; i < comingBooks.length && i < 5; i++) {
+                if (comingBooks[i] != null) {
+                    this.books[bookCount] = comingBooks[i];
+                    bookCount++;
+                }
+            }
         }
     }
     public void addBook(Book addBook){
@@ -31,6 +31,9 @@ public class Librarian {
     }
     public void removeBook(String isbn){
 
+    }
+    public Book[] showArchive() {
+        return books;
     }
 
 }
