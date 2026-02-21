@@ -29,9 +29,9 @@ public class Librarian {
             System.out.println( addBook.getTitle()+" has been added to archive.");
         }
     }
-    public void removeBook(long isbn){
+    public void removeBook(String isbn){
         for(int i =0;i<books.length;i++){
-            if(books[i]!=null && books[i].getISBN()==isbn){
+            if(books[i]!=null && books[i].getISBN().trim().equalsIgnoreCase(isbn)){
                 System.out.println(books[i].getTitle() + " deleted from the archives.");
 
                 books[i]=null;
@@ -44,5 +44,10 @@ public class Librarian {
     public Book[] showArchive() {
         return books;
       }
+
+
+    public void findBook(String isbn){}
     }
+
+
 
