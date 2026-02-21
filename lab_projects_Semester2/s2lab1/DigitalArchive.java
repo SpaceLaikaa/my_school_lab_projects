@@ -13,8 +13,8 @@ public class DigitalArchive {
         books[2] = book3;
 
         for (Book b : books){
-            if(b!=null ){ // may happen a null error
-                book1.displayBooks();
+            if(b!=null ){ // null error handler
+                b.displayBooks();
                 System.out.println();
             }
         }
