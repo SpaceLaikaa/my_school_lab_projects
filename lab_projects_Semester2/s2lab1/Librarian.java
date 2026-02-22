@@ -62,6 +62,10 @@ public class Librarian {
               }
           }
       }
+
+      public void findBookAndApplyDiscount(String isbn, double discountPercentage){
+
+      }
 }
 
 
