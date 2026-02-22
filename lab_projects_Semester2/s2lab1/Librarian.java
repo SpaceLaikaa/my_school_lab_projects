@@ -54,6 +54,14 @@ public class Librarian {
         }
           System.out.println("No ISBN such as "+isbn);
       }
+      public void updatePrice(Book book, double newPrice){
+          for (int i = 0; i < books.length; i++) {
+              if(books[i]!=null && book==books[i]){
+                  book.setPrice(newPrice);
+                  return;
+              }
+          }
+      }
 }
 
 

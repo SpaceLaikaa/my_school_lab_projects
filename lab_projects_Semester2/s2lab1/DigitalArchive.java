@@ -36,6 +36,7 @@ public class DigitalArchive {
                 System.out.println();
             }
         }
+        System.out.println("====================");
 
         System.out.println("Would you like to remove a book? Please write which book you want to remove.(ISBN Number)");
         String userRemoveChoice = sc.nextLine();
@@ -47,10 +48,24 @@ public class DigitalArchive {
             }
         }
 
-        System.out.println("=======");
+        System.out.println("====================");
         System.out.println("Which book do you want to find?(ISBN Number)");
         String userFindBookChoice= sc.nextLine();
         librarian.findBook(userFindBookChoice);
+        System.out.println("=======\n");
+
+
+        // ASSIGNMENT WANTS ME TO USE REMOVE AND  UPDATE PRICE METHODS TOGETHER IN A SINGLE METHOD.
+        System.out.println("Would you like to update a price? Please write which book you want to remove.(ISBN Number)");
+        double userUpdatePriceChoice = sc.nextDouble();
+        for (Book initialBook : initialBooks) {
+            if (initialBook != null && userUpdatePriceChoice == initialBook.getPrice()) {
+                librarian.updatePrice(initialBook, userUpdatePriceChoice);
+                return;
+            }
+            System.out.println("No such book as " + userUpdatePriceChoice);
+        }
+
 
     }
 }
