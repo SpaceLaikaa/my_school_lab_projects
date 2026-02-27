@@ -45,14 +45,15 @@ public class Librarian {
         return books;
       }
 
-      public void findBook(String isbn){
+      public Book findBook(String isbn){
         for(int i =0;i<books.length;i++){
             if(books[i]!=null && books[i].getISBN().trim().equalsIgnoreCase(isbn)){
                 books[i].displayBooks();
-                return;
+                return books[i];
             }
         }
           System.out.println("No ISBN such as "+isbn);
+          return null;
       }
       public void updatePrice(Book book, double newPrice){
           for (int i = 0; i < books.length; i++) {
@@ -64,7 +65,12 @@ public class Librarian {
       }
 
       public void findBookAndApplyDiscount(String isbn, double discountPercentage){
-
+        Book usersBook=findBook(isbn);
+        double usersBookPrice=usersBook.getPrice();
+        usersBookPrice=usersBookPrice*((100-discountPercentage)/100);
+        updatePrice(usersBook,usersBookPrice);
+          System.out.println("\nNew price "+usersBookPrice);
+          showArchive();
       }
 }
 
