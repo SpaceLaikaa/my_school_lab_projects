@@ -9,16 +9,21 @@ public class Bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         BankAccount bankAccount1 = new BankAccount("Arda", 12345678912L);
+        BankAccount bankAccount2 = new BankAccount("Hamza", 12345678910L);
+
         System.out.println("-----------------");
         System.out.println("1. Deposit"); System.out.println("2. Withdraw");
-        System.out.println("3. Check Balance"); System.out.println("4. Exit");
+        System.out.println("3. Balance"); System.out.println("4. Send");
+        System.out.println("5. Exit");
         System.out.println("-----------------");
         String userChoice = sc.nextLine();
 
         if(userChoice.equalsIgnoreCase("1")||userChoice.equalsIgnoreCase("deposit")){
             System.out.println("How much money do you want to deposit ?");
-            int userDepositChoice = sc.nextInt();
-            bankAccount1.deposit(userDepositChoice);
+            double userDepositChoice = sc.nextInt();
+            if(userDepositChoice<=0){System.out.println("Not Valid");}
+            else{bankAccount1.deposit(userDepositChoice);}
+
         }
         else if(userChoice.equalsIgnoreCase("2")||userChoice.equalsIgnoreCase("withdraw")){
             System.out.println("Balance: "+bankAccount1.getBalance());
@@ -26,7 +31,24 @@ public class Bank {
             double userWithdrawChoice = sc.nextInt();
             bankAccount1.withdraw(userWithdrawChoice);
         }
+        else if(userChoice.equalsIgnoreCase("3")||userChoice.equalsIgnoreCase("Balance")){
+            bankAccount1.displayAccountInfo();
+        }
 
+        else if(userChoice.equalsIgnoreCase("4")||userChoice.equalsIgnoreCase("Send")){
+            System.out.println("Which IBAN Account do you want to send money to?");
+            long userSendIban = sc.nextLong();
+            if(userSendIban==bankAccount2.getIban()){
+                System.out.println("How much?");
+                double userSendMoney = sc.nextDouble();
+                bankAccount1.sendMoney(userSendMoney, bankAccount2);
+            }
+            else{System.out.println("Not valid.");}
+        }
+        else if (userChoice.equals("5")||userChoice.equalsIgnoreCase("exit")){
+            System.out.println("Have a nice day!");
+        }
+        else{System.out.println("Not Valid");}
     }
 }
 
@@ -63,6 +85,14 @@ public class Bank {
         public void withdraw(double withdrawAmount){
             double newBalanceWithdraw = getBalance()-withdrawAmount;
             System.out.println(withdrawAmount+"$ withdrawed from your account. \nNew Balance: "+newBalanceWithdraw);
+        }
+        public void displayAccountInfo(){System.out.println(getBalance());}
+
+        public void sendMoney(double sendAmount,BankAccount bankAccount){
+            System.out.println("Successfully sent the money.");
+            System.out.println("Receiver New Balance: "+(bankAccount.getBalance()+sendAmount));
+            System.out.println("Your New Balance: "+(getBalance()-sendAmount));
+
         }
     }
 
