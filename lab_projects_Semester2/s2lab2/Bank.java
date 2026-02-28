@@ -3,13 +3,13 @@ package lab_projects_Semester2.s2lab2;
 import java.util.Scanner;
 
 //Q1 = Constructor lets us access the private variables from an another class.
-//Q2 =
+//Q2 = Static is belong to the class rather than any object. However not-static methods belong to an object.
 
 public class Bank {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        BankAccount bankAccount1 = new BankAccount("Arda", 12345678912L);
-        BankAccount bankAccount2 = new BankAccount("Hamza", 12345678910L);
+        BankAccount bankAccount1 = new BankAccount("Arda", 12345678912L,400);//Doesnt matter constructor balance is 0
+        BankAccount bankAccount2 = new BankAccount("Hamza", 12345678910L,300);
 
         System.out.println("-----------------");
         System.out.println("1. Deposit"); System.out.println("2. Withdraw");
@@ -18,6 +18,7 @@ public class Bank {
         System.out.println("-----------------");
         String userChoice = sc.nextLine();
 
+        //Deposit
         if(userChoice.equalsIgnoreCase("1")||userChoice.equalsIgnoreCase("deposit")){
             System.out.println("How much money do you want to deposit ?");
             double userDepositChoice = sc.nextInt();
@@ -25,16 +26,22 @@ public class Bank {
             else{bankAccount1.deposit(userDepositChoice);}
 
         }
+
+        //Withdraw
         else if(userChoice.equalsIgnoreCase("2")||userChoice.equalsIgnoreCase("withdraw")){
-            System.out.println("Balance: "+bankAccount1.getBalance());
-            System.out.println("How much money do you want to withdraw?");
-            double userWithdrawChoice = sc.nextInt();
-            bankAccount1.withdraw(userWithdrawChoice);
+            if(bankAccount1.getBalance()<=0){System.out.println("You are poor. (0 balance)");}
+            else{System.out.println("Balance: "+bankAccount1.getBalance());
+                System.out.println("How much money do you want to withdraw?");
+                double userWithdrawChoice = sc.nextInt();
+                bankAccount1.withdraw(userWithdrawChoice);}
         }
+
+        //Balance Check
         else if(userChoice.equalsIgnoreCase("3")||userChoice.equalsIgnoreCase("Balance")){
             bankAccount1.displayAccountInfo();
         }
 
+        //Send Money
         else if(userChoice.equalsIgnoreCase("4")||userChoice.equalsIgnoreCase("Send")){
             System.out.println("Which IBAN Account do you want to send money to?");
             long userSendIban = sc.nextLong();
@@ -45,9 +52,9 @@ public class Bank {
             }
             else{System.out.println("Not valid.");}
         }
-        else if (userChoice.equals("5")||userChoice.equalsIgnoreCase("exit")){
-            System.out.println("Have a nice day!");
-        }
+
+        //Exit
+        else if (userChoice.equals("5")||userChoice.equalsIgnoreCase("exit")){System.out.println("Have a nice day!");}
         else{System.out.println("Not Valid");}
     }
 }
@@ -58,7 +65,7 @@ public class Bank {
         double balance=0;
 
 
-        public BankAccount(String ownerName, long iban) {
+        public BankAccount(String ownerName, long iban, double balance) {
             String stringIban = iban+"";
             if(stringIban.length() == 11){
                 this.balance = 0;
